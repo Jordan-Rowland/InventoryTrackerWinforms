@@ -12,9 +12,15 @@ namespace jordan_rowland_inventoryC968
 {
     public partial class AddEditProduct : Form
     {
+        bool isEditMode = false;
         public AddEditProduct()
         {
             InitializeComponent();
+        }
+
+        private void AddEditProduct_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -12,10 +12,27 @@ namespace jordan_rowland_inventoryC968
 {
     public partial class AddEditPart : Form
     {
+        bool isEditMode = false;
         public AddEditPart()
         {
             InitializeComponent();
         }
 
+        public AddEditPart(Part part)
+        {
+            InitializeComponent();
+            isEditMode = true;
+            PopulateFields(part);
+        }
+
+        private void PopulateFields(Part part)
+        {
+            // Populate fields
+        }
+
+        private void Part_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

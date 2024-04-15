@@ -17,9 +17,22 @@ namespace jordan_rowland_inventoryC968
             InitializeComponent();
         }
 
-        private void button9_Click(object sender, EventArgs e)
+        private void btn_Exit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btn_PartsAdd_Click(object sender, EventArgs e)
+        {
+            AddEditPart addEditPart = new AddEditPart();
+            addEditPart.ShowDialog();
+        }
+
+        private void btn_ProductsAdd_Click(object sender, EventArgs e)
+        {
+            AddEditProduct addEditProduct = new AddEditProduct();
+            addEditProduct.ShowDialog();
+
         }
     }
 }
