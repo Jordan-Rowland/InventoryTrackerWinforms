@@ -45,8 +45,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
-            this.rdo_InHouse = new System.Windows.Forms.RadioButton();
-            this.rdo_OutSourced = new System.Windows.Forms.RadioButton();
+            this.rdo_Inhouse = new System.Windows.Forms.RadioButton();
+            this.rdo_Outsourced = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // label1
@@ -209,37 +209,37 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
-            // rdo_InHouse
+            // rdo_Inhouse
             // 
-            this.rdo_InHouse.AutoSize = true;
-            this.rdo_InHouse.Location = new System.Drawing.Point(149, 15);
-            this.rdo_InHouse.Name = "rdo_InHouse";
-            this.rdo_InHouse.Size = new System.Drawing.Size(82, 20);
-            this.rdo_InHouse.TabIndex = 17;
-            this.rdo_InHouse.TabStop = true;
-            this.rdo_InHouse.Text = "In-House";
-            this.rdo_InHouse.UseVisualStyleBackColor = true;
-            this.rdo_InHouse.CheckedChanged += new System.EventHandler(this.rdo_InHouse_CheckedChanged);
+            this.rdo_Inhouse.AutoSize = true;
+            this.rdo_Inhouse.Location = new System.Drawing.Point(149, 15);
+            this.rdo_Inhouse.Name = "rdo_Inhouse";
+            this.rdo_Inhouse.Size = new System.Drawing.Size(82, 20);
+            this.rdo_Inhouse.TabIndex = 17;
+            this.rdo_Inhouse.TabStop = true;
+            this.rdo_Inhouse.Text = "In-House";
+            this.rdo_Inhouse.UseVisualStyleBackColor = true;
+            this.rdo_Inhouse.CheckedChanged += new System.EventHandler(this.rdo_InHouse_CheckedChanged);
             // 
-            // rdo_OutSourced
+            // rdo_Outsourced
             // 
-            this.rdo_OutSourced.AutoSize = true;
-            this.rdo_OutSourced.Location = new System.Drawing.Point(252, 15);
-            this.rdo_OutSourced.Name = "rdo_OutSourced";
-            this.rdo_OutSourced.Size = new System.Drawing.Size(97, 20);
-            this.rdo_OutSourced.TabIndex = 18;
-            this.rdo_OutSourced.TabStop = true;
-            this.rdo_OutSourced.Text = "Outsourced";
-            this.rdo_OutSourced.UseVisualStyleBackColor = true;
-            this.rdo_OutSourced.CheckedChanged += new System.EventHandler(this.rdo_OutSourced_CheckedChanged);
+            this.rdo_Outsourced.AutoSize = true;
+            this.rdo_Outsourced.Location = new System.Drawing.Point(252, 15);
+            this.rdo_Outsourced.Name = "rdo_Outsourced";
+            this.rdo_Outsourced.Size = new System.Drawing.Size(97, 20);
+            this.rdo_Outsourced.TabIndex = 18;
+            this.rdo_Outsourced.TabStop = true;
+            this.rdo_Outsourced.Text = "Outsourced";
+            this.rdo_Outsourced.UseVisualStyleBackColor = true;
+            this.rdo_Outsourced.CheckedChanged += new System.EventHandler(this.rdo_OutSourced_CheckedChanged);
             // 
             // AddEditPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(488, 447);
-            this.Controls.Add(this.rdo_OutSourced);
-            this.Controls.Add(this.rdo_InHouse);
+            this.Controls.Add(this.rdo_Outsourced);
+            this.Controls.Add(this.rdo_Inhouse);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.label8);
@@ -284,7 +284,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button btn_Cancel;
-        private System.Windows.Forms.RadioButton rdo_InHouse;
-        private System.Windows.Forms.RadioButton rdo_OutSourced;
+        private System.Windows.Forms.RadioButton rdo_Inhouse;
+        private System.Windows.Forms.RadioButton rdo_Outsourced;
     }
 }

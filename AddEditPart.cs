@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,23 +20,40 @@ namespace jordan_rowland_inventoryC968
         {
             InitializeComponent();
             Inventory = inventory;
-            if (!Inventory.AllParts.Any())
-            {
-                txt_PartId.Text = "1";
-            }
-            txt_PartId.Text = (Inventory.AllParts.Last().PartId + 1).ToString();
+            if (!Inventory.AllParts.Any()) txt_PartId.Text = "1";
+            else txt_PartId.Text = (Inventory.AllParts.Last().PartId + 1).ToString();
+            rdo_Inhouse.Checked = true;
         }
 
-        public AddEditPart(Part part)
+        public AddEditPart(Inventory inventory, Part part)
         {
             InitializeComponent();
+            Inventory = inventory;
             isEditMode = true;
             PopulateFields(part);
         }
 
         private void PopulateFields(Part part)
         {
-            // Populate fields
+            txt_PartId.Text = part.PartId.ToString();
+            txt_PartName.Text = part.Name;
+            txt_PartInventory.Text = part.InStock.ToString();
+            txt_PartPrice.Text = part.Price.ToString();
+            txt_PartMin.Text = part.Min.ToString();
+            txt_PartMax.Text = part.Max.ToString();
+            
+            // Set the correct machine ID or Company Name
+            try
+            {
+                txt_PartMachineOrCompany.Text = ((Inhouse)part).MachineId.ToString();
+                rdo_Inhouse.Checked = true;
+            }
+            catch
+            {
+                txt_PartMachineOrCompany.Text = ((Outsourced)part).CompanyName.ToString();
+                rdo_Outsourced.Checked = true;
+
+            }
         }
 
         private void Part_Load(object sender, EventArgs e)
@@ -53,15 +71,32 @@ namespace jordan_rowland_inventoryC968
             int min = int.Parse(txt_PartMin.Text);
             int max = int.Parse(txt_PartMax.Text);
 
-            if (rdo_OutSourced.Checked)
+
+            if (isEditMode)
             {
-                string machineOrCompany = txt_PartMachineOrCompany.Text;
-                Inventory.addPart(new Outsourced() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, CompanyName = machineOrCompany });
+                if (rdo_Outsourced.Checked)
+                {
+                    string machineOrCompany = txt_PartMachineOrCompany.Text;
+                    Inventory.updatePart(id, new Outsourced() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, CompanyName = machineOrCompany });
+                }
+                else if (rdo_Inhouse.Checked)
+                {
+                    int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
+                    Inventory.updatePart(id, new Inhouse() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, MachineId = machineOrCompany });
+                }
             }
             else
             {
-                int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
-                Inventory.addPart(new Inhouse() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, MachineID = machineOrCompany });
+                if (rdo_Outsourced.Checked)
+                {
+                    string machineOrCompany = txt_PartMachineOrCompany.Text;
+                    Inventory.addPart(new Outsourced() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, CompanyName = machineOrCompany });
+                }
+                else if (rdo_Inhouse.Checked)
+                {
+                    int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
+                    Inventory.addPart(new Inhouse() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, MachineId = machineOrCompany });
+                }
             }
             Close();
         }

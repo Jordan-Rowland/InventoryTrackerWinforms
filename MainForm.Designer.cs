@@ -105,6 +105,7 @@
             this.btn_PartsDelete.TabIndex = 5;
             this.btn_PartsDelete.Text = "Delete";
             this.btn_PartsDelete.UseVisualStyleBackColor = true;
+            this.btn_PartsDelete.Click += new System.EventHandler(this.btn_PartsDelete_Click);
             // 
             // btn_PartsEdit
             // 
@@ -115,6 +116,7 @@
             this.btn_PartsEdit.TabIndex = 6;
             this.btn_PartsEdit.Text = "Modify";
             this.btn_PartsEdit.UseVisualStyleBackColor = true;
+            this.btn_PartsEdit.Click += new System.EventHandler(this.btn_PartsEdit_Click);
             // 
             // btn_PartsAdd
             // 

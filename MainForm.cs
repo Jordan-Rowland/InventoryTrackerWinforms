@@ -13,13 +13,13 @@ namespace jordan_rowland_inventoryC968
     public partial class MainForm : Form
     {
 
-        Inventory inventory = new Inventory();
+        Inventory Inventory = new Inventory();
 
         public MainForm()
         {
             InitializeComponent();
-            dg_Parts.DataSource = new BindingSource(inventory.AllParts, null);
-            dg_Products.DataSource = new BindingSource(inventory.Products, null);
+            dg_Parts.DataSource = new BindingSource(Inventory.AllParts, null);
+            dg_Products.DataSource = new BindingSource(Inventory.Products, null);
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace jordan_rowland_inventoryC968
 
         private void btn_PartsAdd_Click(object sender, EventArgs e)
         {
-            AddEditPart addEditPart = new AddEditPart(inventory);
+            AddEditPart addEditPart = new AddEditPart(Inventory);
             addEditPart.ShowDialog();
         }
 
@@ -38,6 +38,21 @@ namespace jordan_rowland_inventoryC968
             AddEditProduct addEditProduct = new AddEditProduct();
             addEditProduct.ShowDialog();
 
+        }
+
+        private void btn_PartsEdit_Click(object sender, EventArgs e)
+        {
+            int id = (int)dg_Parts.SelectedRows[0].Cells["PartId"].Value;
+            Part part = Inventory.AllParts.FirstOrDefault(q => q.PartId == id);
+            AddEditPart addEditPart = new AddEditPart(Inventory, part);
+            addEditPart.ShowDialog();
+        }
+
+        private void btn_PartsDelete_Click(object sender, EventArgs e)
+        {
+            int id = (int)dg_Parts.SelectedRows[0].Cells["PartId"].Value;
+            Part part = Inventory.AllParts.FirstOrDefault(q => q.PartId == id);
+            Inventory.deletePart(part);
         }
     }
 }

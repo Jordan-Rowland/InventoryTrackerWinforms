@@ -18,7 +18,7 @@ namespace jordan_rowland_inventoryC968
 
     public class Inhouse : Part
     {
-        public int MachineID { get; set; }
+        public int MachineId { get; set; }
     }
 
     public class Outsourced : Part
