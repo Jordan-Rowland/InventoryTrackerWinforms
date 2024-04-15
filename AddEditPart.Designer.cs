@@ -35,7 +35,7 @@
             this.txt_PartMin = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txt_PartMax = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_CompanyOrMachineLabel = new System.Windows.Forms.Label();
             this.txt_PartMachineOrCompany = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.txt_PartPrice = new System.Windows.Forms.TextBox();
@@ -74,7 +74,7 @@
             this.txt_PartName.Location = new System.Drawing.Point(197, 118);
             this.txt_PartName.Name = "txt_PartName";
             this.txt_PartName.Size = new System.Drawing.Size(159, 28);
-            this.txt_PartName.TabIndex = 3;
+            this.txt_PartName.TabIndex = 2;
             // 
             // label2
             // 
@@ -111,17 +111,17 @@
             this.txt_PartMax.Location = new System.Drawing.Point(332, 219);
             this.txt_PartMax.Name = "txt_PartMax";
             this.txt_PartMax.Size = new System.Drawing.Size(63, 28);
-            this.txt_PartMax.TabIndex = 7;
+            this.txt_PartMax.TabIndex = 6;
             // 
-            // label4
+            // lbl_CompanyOrMachineLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(69, 258);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 24);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Machine ID";
+            this.lbl_CompanyOrMachineLabel.AutoSize = true;
+            this.lbl_CompanyOrMachineLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_CompanyOrMachineLabel.Location = new System.Drawing.Point(36, 258);
+            this.lbl_CompanyOrMachineLabel.Name = "lbl_CompanyOrMachineLabel";
+            this.lbl_CompanyOrMachineLabel.Size = new System.Drawing.Size(105, 24);
+            this.lbl_CompanyOrMachineLabel.TabIndex = 6;
+            this.lbl_CompanyOrMachineLabel.Text = "Machine ID";
             // 
             // txt_PartMachineOrCompany
             // 
@@ -129,7 +129,7 @@
             this.txt_PartMachineOrCompany.Location = new System.Drawing.Point(197, 254);
             this.txt_PartMachineOrCompany.Name = "txt_PartMachineOrCompany";
             this.txt_PartMachineOrCompany.Size = new System.Drawing.Size(159, 28);
-            this.txt_PartMachineOrCompany.TabIndex = 9;
+            this.txt_PartMachineOrCompany.TabIndex = 7;
             // 
             // label5
             // 
@@ -147,7 +147,7 @@
             this.txt_PartPrice.Location = new System.Drawing.Point(197, 186);
             this.txt_PartPrice.Name = "txt_PartPrice";
             this.txt_PartPrice.Size = new System.Drawing.Size(159, 28);
-            this.txt_PartPrice.TabIndex = 11;
+            this.txt_PartPrice.TabIndex = 4;
             // 
             // label6
             // 
@@ -165,7 +165,7 @@
             this.txt_PartInventory.Location = new System.Drawing.Point(197, 152);
             this.txt_PartInventory.Name = "txt_PartInventory";
             this.txt_PartInventory.Size = new System.Drawing.Size(159, 28);
-            this.txt_PartInventory.TabIndex = 13;
+            this.txt_PartInventory.TabIndex = 3;
             // 
             // label7
             // 
@@ -196,6 +196,7 @@
             this.btn_Save.TabIndex = 15;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // btn_Cancel
             // 
@@ -206,6 +207,7 @@
             this.btn_Cancel.TabIndex = 16;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // rdo_InHouse
             // 
@@ -217,6 +219,7 @@
             this.rdo_InHouse.TabStop = true;
             this.rdo_InHouse.Text = "In-House";
             this.rdo_InHouse.UseVisualStyleBackColor = true;
+            this.rdo_InHouse.CheckedChanged += new System.EventHandler(this.rdo_InHouse_CheckedChanged);
             // 
             // rdo_OutSourced
             // 
@@ -228,12 +231,13 @@
             this.rdo_OutSourced.TabStop = true;
             this.rdo_OutSourced.Text = "Outsourced";
             this.rdo_OutSourced.UseVisualStyleBackColor = true;
+            this.rdo_OutSourced.CheckedChanged += new System.EventHandler(this.rdo_OutSourced_CheckedChanged);
             // 
             // AddEditPart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(481, 447);
+            this.ClientSize = new System.Drawing.Size(488, 447);
             this.Controls.Add(this.rdo_OutSourced);
             this.Controls.Add(this.rdo_InHouse);
             this.Controls.Add(this.btn_Cancel);
@@ -246,7 +250,7 @@
             this.Controls.Add(this.txt_PartMachineOrCompany);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txt_PartMax);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_CompanyOrMachineLabel);
             this.Controls.Add(this.txt_PartMin);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txt_PartName);
@@ -270,7 +274,7 @@
         private System.Windows.Forms.TextBox txt_PartMin;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_PartMax;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_CompanyOrMachineLabel;
         private System.Windows.Forms.TextBox txt_PartMachineOrCompany;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txt_PartPrice;

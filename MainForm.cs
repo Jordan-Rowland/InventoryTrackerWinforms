@@ -12,9 +12,14 @@ namespace jordan_rowland_inventoryC968
 {
     public partial class MainForm : Form
     {
+
+        Inventory inventory = new Inventory();
+
         public MainForm()
         {
             InitializeComponent();
+            dg_Parts.DataSource = new BindingSource(inventory.AllParts, null);
+            dg_Products.DataSource = new BindingSource(inventory.Products, null);
         }
 
         private void btn_Exit_Click(object sender, EventArgs e)
@@ -24,7 +29,7 @@ namespace jordan_rowland_inventoryC968
 
         private void btn_PartsAdd_Click(object sender, EventArgs e)
         {
-            AddEditPart addEditPart = new AddEditPart();
+            AddEditPart addEditPart = new AddEditPart(inventory);
             addEditPart.ShowDialog();
         }
 
