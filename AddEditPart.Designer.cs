@@ -42,7 +42,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_PartInventory = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbl_MainLabel = new System.Windows.Forms.Label();
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.rdo_Inhouse = new System.Windows.Forms.RadioButton();
@@ -177,15 +177,15 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Name";
             // 
-            // label8
+            // lbl_MainLabel
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 9);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(82, 24);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Add Part";
+            this.lbl_MainLabel.AutoSize = true;
+            this.lbl_MainLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_MainLabel.Location = new System.Drawing.Point(12, 9);
+            this.lbl_MainLabel.Name = "lbl_MainLabel";
+            this.lbl_MainLabel.Size = new System.Drawing.Size(82, 24);
+            this.lbl_MainLabel.TabIndex = 14;
+            this.lbl_MainLabel.Text = "Add Part";
             // 
             // btn_Save
             // 
@@ -242,7 +242,7 @@
             this.Controls.Add(this.rdo_Inhouse);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Save);
-            this.Controls.Add(this.label8);
+            this.Controls.Add(this.lbl_MainLabel);
             this.Controls.Add(this.txt_PartInventory);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txt_PartPrice);
@@ -281,7 +281,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txt_PartInventory;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbl_MainLabel;
         private System.Windows.Forms.Button btn_Save;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.RadioButton rdo_Inhouse;

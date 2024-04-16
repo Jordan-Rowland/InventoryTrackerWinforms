@@ -22,7 +22,7 @@ namespace jordan_rowland_inventoryC968
             InitializeComponent();
             Inventory = inventory;
 
-            if (!Inventory.AllParts.Any()) txt_ProductId.Text = "1";
+            if (!Inventory.Products.Any()) txt_ProductId.Text = "1";
             else txt_ProductId.Text = (Inventory.Products.Last().ProductId + 1).ToString();
 
             dg_AllParts.DataSource = new BindingSource(Inventory.AllParts, null);
@@ -35,6 +35,7 @@ namespace jordan_rowland_inventoryC968
             InitializeComponent();
             Inventory = inventory;
             isEditMode = true;
+            lbl_MainLabel.Text = "Modify Product";
             AssociatedParts = new BindingList<Part>(product.AssociatedParts.ToList());
             dg_AllParts.DataSource = new BindingSource(Inventory.AllParts, null);
             dg_ProductParts.DataSource = new BindingSource(AssociatedParts, null);

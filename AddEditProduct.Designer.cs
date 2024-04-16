@@ -50,7 +50,7 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txt_ProductId = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_MainLabel = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.dg_ProductParts = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dg_AllParts)).BeginInit();
@@ -267,15 +267,15 @@
             this.label9.TabIndex = 24;
             this.label9.Text = "ID";
             // 
-            // label4
+            // lbl_MainLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(12, 9);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(145, 29);
-            this.label4.TabIndex = 40;
-            this.label4.Text = "Add Product";
+            this.lbl_MainLabel.AutoSize = true;
+            this.lbl_MainLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_MainLabel.Location = new System.Drawing.Point(12, 9);
+            this.lbl_MainLabel.Name = "lbl_MainLabel";
+            this.lbl_MainLabel.Size = new System.Drawing.Size(145, 29);
+            this.lbl_MainLabel.TabIndex = 40;
+            this.lbl_MainLabel.Text = "Add Product";
             // 
             // label3
             // 
@@ -304,7 +304,7 @@
             this.ClientSize = new System.Drawing.Size(1000, 772);
             this.Controls.Add(this.dg_ProductParts);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label4);
+            this.Controls.Add(this.lbl_MainLabel);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Save);
             this.Controls.Add(this.txt_ProductInventory);
@@ -361,7 +361,7 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txt_ProductId;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lbl_MainLabel;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridView dg_ProductParts;
     }

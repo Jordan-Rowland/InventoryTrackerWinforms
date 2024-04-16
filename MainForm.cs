@@ -97,6 +97,7 @@ namespace jordan_rowland_inventoryC968
         {
             //try
             //{
+                // BETTER ERRORS
                 int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
                 Product product = Inventory.LookupProduct(id);
                 AddEditProduct addEditProduct = new AddEditProduct(Inventory, product);
@@ -107,6 +108,13 @@ namespace jordan_rowland_inventoryC968
             //{
             //    MessageBox.Show("No Product selected");
             //}
+        }
+
+        private void btn_ProductsDelete_Click(object sender, EventArgs e)
+        {
+            int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
+            Product product = Inventory.LookupProduct(id);
+            Inventory.RemoveProduct(product);
         }
     }
 }

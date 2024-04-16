@@ -30,6 +30,7 @@ namespace jordan_rowland_inventoryC968
             InitializeComponent();
             Inventory = inventory;
             isEditMode = true;
+            lbl_MainLabel.Text = "Modify Part";
             PopulateFields(part);
         }
 
@@ -72,6 +73,8 @@ namespace jordan_rowland_inventoryC968
             int max = int.Parse(txt_PartMax.Text);
 
             dynamic part;
+
+            //!! TODO: Be able to change the part from Inhouse to Outsourced
             if (rdo_Outsourced.Checked)
             {
                 string machineOrCompany = txt_PartMachineOrCompany.Text;

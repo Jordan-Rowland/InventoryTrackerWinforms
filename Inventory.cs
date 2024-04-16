@@ -31,16 +31,12 @@ namespace jordan_rowland_inventoryC968
                 Max = 6,
                 AssociatedParts = new BindingList<Part>() { hardcodedPart1, hardcodedPart2, hardcodedPart3 },
             };
-            //!! Figure out why there is a phantom row
             Products = new BindingList<Product>() { hardcodedProduct1 };
         }
         public void AddProduct(Product product) => Products.Add(product);
-        public bool RemoveProduct(Product product)
-        {
-            Products.Remove(product);
-            return false;
-        }
+        public bool RemoveProduct(Product product) =>Products.Remove(product);
         public Product LookupProduct(int productId) => Products.FirstOrDefault(q => q.ProductId == productId);
+        
         public void UpdateProduct(int productId, Product newProduct)
         {
             Product product = LookupProduct(productId);
@@ -54,42 +50,15 @@ namespace jordan_rowland_inventoryC968
         }
 
         public void AddPart(Part part) => AllParts.Add(part);
-        public bool DeletePart(Part part)
-        {
-            AllParts.Remove(part);
-            // Add code here to check list and if item still exists, return false
-            return false;
-        }
+        public bool DeletePart(Part part) => AllParts.Remove(part);
         public Part LookupPart(int partId) => AllParts.FirstOrDefault(q => q.PartId == partId);
 
         // Maybe use 2 functions for this
         public void UpdatePart(int partId, Part newPart)
         {
             Part part = LookupPart(partId);
-            dynamic updatedPart;
-            dynamic parsedNewPart;
-
-            // Add checking for switching from Inhouse to Outsourced,
-            // or try breaking the function up into 2 - overloading
-            try
-            {
-                updatedPart = (Inhouse)part;
-                parsedNewPart = (Inhouse)newPart;
-                updatedPart.MachineId = parsedNewPart.MachineId;
-            }
-            catch
-            {
-                updatedPart = (Outsourced)part;
-                parsedNewPart = (Outsourced)newPart;
-                updatedPart.CompanyName = parsedNewPart.CompanyName;
-            }
-
-            updatedPart.PartId = newPart.PartId;
-            updatedPart.Name = newPart.Name;
-            updatedPart.InStock = newPart.InStock;
-            updatedPart.Price = newPart.Price;
-            updatedPart.Min = newPart.Min;
-            updatedPart.Max = newPart.Max;
+            DeletePart(part);
+            AddPart(newPart);
         }
     }
 }

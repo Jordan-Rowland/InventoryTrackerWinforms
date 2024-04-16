@@ -161,6 +161,7 @@
             this.btn_ProductsDelete.TabIndex = 12;
             this.btn_ProductsDelete.Text = "Delete";
             this.btn_ProductsDelete.UseVisualStyleBackColor = true;
+            this.btn_ProductsDelete.Click += new System.EventHandler(this.btn_ProductsDelete_Click);
             // 
             // dg_Products
             // 
