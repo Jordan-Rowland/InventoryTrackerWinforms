@@ -74,10 +74,7 @@ namespace jordan_rowland_inventoryC968
 
         }
 
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
+        private void btn_Cancel_Click(object sender, EventArgs e) => Close();
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
@@ -89,7 +86,7 @@ namespace jordan_rowland_inventoryC968
             if (!int.TryParse(txt_ProductMin.Text, out int min)) errors += "* Min must be a valid number\n";
             if (!int.TryParse(txt_ProductMax.Text, out int max)) errors += "* Max must be a valid number\n";
             if (min > max) errors += "* Min must be less than Max\n";
-            if (inventory < min || inventory > max) errors += "* Inventory must be between Min and Max\n";
+            if ((min < max) && (inventory < min || inventory > max)) errors += "* Inventory must be between Min and Max\n";
 
             if (errors.Any())
             {
@@ -145,19 +142,19 @@ namespace jordan_rowland_inventoryC968
         }
             catch
             {
-                // EDIT THIS TO HAVE BETTER ERRORS
                 MessageBox.Show("No Product selected");
             }
 }
 
         private void btn_AllPartsSearch_Click(object sender, EventArgs e)
         {
+            bool partFound = false;
             if (int.TryParse(txt_AllPartsSearch.Text, out int result))
             {
                 foreach (DataGridViewRow row in dg_AllParts.Rows)
                 {
                     Part part = (Part)row.DataBoundItem;
-                    if (result == part.PartId) row.Selected = true;
+                    if (result == part.PartId) row.Selected = partFound = true;
                     else row.Selected = false;
                 }
             }
@@ -166,20 +163,23 @@ namespace jordan_rowland_inventoryC968
                 foreach (DataGridViewRow row in dg_AllParts.Rows)
                 {
                     Part part = (Part)row.DataBoundItem;
-                    if (part.Name.Contains(txt_AllPartsSearch.Text)) row.Selected = true;
+                    if (txt_AllPartsSearch.Text == "") row.Selected = false;
+                    else if (part.Name.Contains(txt_AllPartsSearch.Text)) row.Selected = partFound = true;
                     else row.Selected = false;
                 }
             }
+            if (txt_AllPartsSearch.Text != "" && !partFound) MessageBox.Show("Part could not be found.");
         }
 
         private void btn_ProductPartsSearch_Click(object sender, EventArgs e)
         {
+            bool partFound = false;
             if (int.TryParse(txt_ProductPartsSearch.Text, out int result))
             {
                 foreach (DataGridViewRow row in dg_ProductParts.Rows)
                 {
                     Part part = (Part)row.DataBoundItem;
-                    if (result == part.PartId) row.Selected = true;
+                    if (result == part.PartId) row.Selected = partFound = true;
                     else row.Selected = false;
                 }
             }
@@ -188,10 +188,11 @@ namespace jordan_rowland_inventoryC968
                 foreach (DataGridViewRow row in dg_ProductParts.Rows)
                 {
                     Part part = (Part)row.DataBoundItem;
-                    if (part.Name.Contains(txt_ProductPartsSearch.Text)) row.Selected = true;
+                    if (part.Name.Contains(txt_ProductPartsSearch.Text)) row.Selected = partFound = true;
                     else row.Selected = false;
                 }
             }
+            if (txt_ProductPartsSearch.Text != "" && !partFound) MessageBox.Show("Part could not be found.");
         }
 
         private void txt_ProductId_TextChanged(object sender, EventArgs e) => checkAndDisableSave();

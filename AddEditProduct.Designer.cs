@@ -165,7 +165,7 @@
             this.txt_ProductInventory.Location = new System.Drawing.Point(123, 371);
             this.txt_ProductInventory.Name = "txt_ProductInventory";
             this.txt_ProductInventory.Size = new System.Drawing.Size(159, 28);
-            this.txt_ProductInventory.TabIndex = 37;
+            this.txt_ProductInventory.TabIndex = 2;
             this.txt_ProductInventory.TextChanged += new System.EventHandler(this.txt_ProductInventory_TextChanged);
             // 
             // label7
@@ -184,7 +184,7 @@
             this.txt_ProductPrice.Location = new System.Drawing.Point(123, 405);
             this.txt_ProductPrice.Name = "txt_ProductPrice";
             this.txt_ProductPrice.Size = new System.Drawing.Size(159, 28);
-            this.txt_ProductPrice.TabIndex = 35;
+            this.txt_ProductPrice.TabIndex = 3;
             this.txt_ProductPrice.TextChanged += new System.EventHandler(this.txt_ProductPrice_TextChanged);
             // 
             // label6
@@ -213,7 +213,7 @@
             this.txt_ProductMax.Location = new System.Drawing.Point(258, 438);
             this.txt_ProductMax.Name = "txt_ProductMax";
             this.txt_ProductMax.Size = new System.Drawing.Size(63, 28);
-            this.txt_ProductMax.TabIndex = 31;
+            this.txt_ProductMax.TabIndex = 5;
             this.txt_ProductMax.TextChanged += new System.EventHandler(this.txt_ProductMax_TextChanged);
             // 
             // txt_ProductMin
@@ -222,7 +222,7 @@
             this.txt_ProductMin.Location = new System.Drawing.Point(123, 439);
             this.txt_ProductMin.Name = "txt_ProductMin";
             this.txt_ProductMin.Size = new System.Drawing.Size(63, 28);
-            this.txt_ProductMin.TabIndex = 29;
+            this.txt_ProductMin.TabIndex = 4;
             this.txt_ProductMin.TextChanged += new System.EventHandler(this.txt_ProductMin_TextChanged);
             // 
             // label1
@@ -241,7 +241,7 @@
             this.txt_ProductName.Location = new System.Drawing.Point(123, 337);
             this.txt_ProductName.Name = "txt_ProductName";
             this.txt_ProductName.Size = new System.Drawing.Size(159, 28);
-            this.txt_ProductName.TabIndex = 27;
+            this.txt_ProductName.TabIndex = 1;
             this.txt_ProductName.TextChanged += new System.EventHandler(this.txt_ProductName_TextChanged);
             // 
             // label8

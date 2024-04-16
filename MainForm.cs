@@ -121,8 +121,7 @@ namespace jordan_rowland_inventoryC968
                 foreach (DataGridViewRow row in dg_Products.Rows)
                 {
                     Product product = (Product)row.DataBoundItem;
-                    if (txt_ProductSearch.Text == "") row.Selected = false;
-                    else if (result == product.ProductId) row.Selected = productFound = true;
+                    if (result == product.ProductId) row.Selected = productFound = true;
                     else row.Selected = false;
                 }
             }

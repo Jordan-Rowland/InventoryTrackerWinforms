@@ -72,12 +72,11 @@ namespace jordan_rowland_inventoryC968
             if (!int.TryParse(txt_PartMin.Text, out int min)) errors += "* Min must be a valid number\n";
             if (!int.TryParse(txt_PartMax.Text, out int max)) errors += "* Max must be a valid number\n";
             if (min > max) errors += "* Min must be less than Max\n";
-            if (inventory < min || inventory > max) errors += "* Inventory must be between Min and Max\n";
+            if ((min < max) && (inventory < min || inventory > max)) errors += "* Inventory must be between Min and Max\n";
 
             int machineId = 0;
             if (rdo_Inhouse.Checked && !int.TryParse(txt_PartMachineOrCompany.Text, out machineId))
                 errors += "* Machine ID valid number\n";
-
 
             if (errors.Any())
             {
@@ -122,21 +121,9 @@ namespace jordan_rowland_inventoryC968
             else Inventory.AddPart(part);
             Close();
         }
-
-        private void btn_Cancel_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
-        private void rdo_InHouse_CheckedChanged(object sender, EventArgs e)
-        {
-            lbl_CompanyOrMachineLabel.Text = "Machine ID";
-        }
-
-        private void rdo_OutSourced_CheckedChanged(object sender, EventArgs e)
-        {
-            lbl_CompanyOrMachineLabel.Text = "Company Name";
-        }
+        private void btn_Cancel_Click(object sender, EventArgs e) => Close();
+        private void rdo_InHouse_CheckedChanged(object sender, EventArgs e) => lbl_CompanyOrMachineLabel.Text = "Machine ID";
+        private void rdo_OutSourced_CheckedChanged(object sender, EventArgs e) => lbl_CompanyOrMachineLabel.Text = "Company Name";
 
         private void checkAndDisableSave()
         {
