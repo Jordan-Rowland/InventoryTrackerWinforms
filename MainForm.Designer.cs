@@ -236,6 +236,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MainForm";
             this.Text = "Main";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dg_Parts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dg_Products)).EndInit();
             this.ResumeLayout(false);

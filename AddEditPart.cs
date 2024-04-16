@@ -23,6 +23,7 @@ namespace jordan_rowland_inventoryC968
             if (!Inventory.AllParts.Any()) txt_PartId.Text = "1";
             else txt_PartId.Text = (Inventory.AllParts.Last().PartId + 1).ToString();
             rdo_Inhouse.Checked = true;
+            checkAndDisableSave();
         }
 
         public AddEditPart(Inventory inventory, Part part)
@@ -122,5 +123,34 @@ namespace jordan_rowland_inventoryC968
         {
             lbl_CompanyOrMachineLabel.Text = "Company Name";
         }
+
+        private void checkAndDisableSave()
+        {
+            List<string> fields = new List<string>()
+            { 
+                txt_PartId.Text,
+                txt_PartName.Text,
+                txt_PartInventory.Text,
+                txt_PartPrice.Text,
+                txt_PartMin.Text,
+                txt_PartMax.Text,
+            };
+            foreach (string field in fields)
+            {
+                if (field == "")
+                {
+                    btn_Save.Enabled = false;
+                    break;
+                }
+                else btn_Save.Enabled = true;
+            }
+        }
+        private void txt_PartId_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartName_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartInventory_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartPrice_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartMin_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartMax_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_PartMachineOrCompany_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
     }
 }

@@ -106,7 +106,13 @@ namespace jordan_rowland_inventoryC968
             try
             {
                 int id = (int)dg_ProductParts.SelectedRows[0].Cells["PartId"].Value;
-                AssociatedParts.Remove(AssociatedParts.FirstOrDefault(q => q.PartId == id));
+                string message = "Delete this Part?";
+                string caption = "Click Yes or No to confirm";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                    AssociatedParts.Remove(AssociatedParts.FirstOrDefault(q => q.PartId == id));
             }
             catch
             {
@@ -128,5 +134,78 @@ namespace jordan_rowland_inventoryC968
                 MessageBox.Show("No Product selected");
             }
 }
+
+        private void btn_AllPartsSearch_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txt_AllPartsSearch.Text, out int result))
+            {
+                foreach (DataGridViewRow row in dg_AllParts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (result == part.PartId) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dg_AllParts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.Contains(txt_AllPartsSearch.Text)) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+        }
+
+        private void btn_ProductPartsSearch_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txt_ProductPartsSearch.Text, out int result))
+            {
+                foreach (DataGridViewRow row in dg_ProductParts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (result == part.PartId) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dg_ProductParts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.Contains(txt_ProductPartsSearch.Text)) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+        }
+
+        private void txt_ProductId_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_ProductName_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_ProductInventory_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_ProductPrice_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_ProductMin_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+        private void txt_ProductMax_TextChanged(object sender, EventArgs e) => checkAndDisableSave();
+
+        private void checkAndDisableSave()
+        {
+            List<string> fields = new List<string>()
+            {
+                txt_ProductId.Text,
+                txt_ProductName.Text,
+                txt_ProductInventory.Text,
+                txt_ProductPrice.Text,
+                txt_ProductMin.Text,
+                txt_ProductMax.Text,
+            };
+            foreach (string field in fields)
+            {
+                if (field == "")
+                {
+                    btn_Save.Enabled = false;
+                    break;
+                }
+                else btn_Save.Enabled = true;
+            }
+        }
     }
 }

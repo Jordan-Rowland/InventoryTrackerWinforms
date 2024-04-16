@@ -87,6 +87,7 @@
             this.btn_AllPartsSearch.TabIndex = 10;
             this.btn_AllPartsSearch.Text = "Search";
             this.btn_AllPartsSearch.UseVisualStyleBackColor = true;
+            this.btn_AllPartsSearch.Click += new System.EventHandler(this.btn_AllPartsSearch_Click);
             // 
             // txt_AllPartsSearch
             // 
@@ -126,6 +127,7 @@
             this.btn_ProductPartsSearch.TabIndex = 17;
             this.btn_ProductPartsSearch.Text = "Search";
             this.btn_ProductPartsSearch.UseVisualStyleBackColor = true;
+            this.btn_ProductPartsSearch.Click += new System.EventHandler(this.btn_ProductPartsSearch_Click);
             // 
             // txt_ProductPartsSearch
             // 
@@ -164,6 +166,7 @@
             this.txt_ProductInventory.Name = "txt_ProductInventory";
             this.txt_ProductInventory.Size = new System.Drawing.Size(159, 28);
             this.txt_ProductInventory.TabIndex = 37;
+            this.txt_ProductInventory.TextChanged += new System.EventHandler(this.txt_ProductInventory_TextChanged);
             // 
             // label7
             // 
@@ -182,6 +185,7 @@
             this.txt_ProductPrice.Name = "txt_ProductPrice";
             this.txt_ProductPrice.Size = new System.Drawing.Size(159, 28);
             this.txt_ProductPrice.TabIndex = 35;
+            this.txt_ProductPrice.TextChanged += new System.EventHandler(this.txt_ProductPrice_TextChanged);
             // 
             // label6
             // 
@@ -210,6 +214,7 @@
             this.txt_ProductMax.Name = "txt_ProductMax";
             this.txt_ProductMax.Size = new System.Drawing.Size(63, 28);
             this.txt_ProductMax.TabIndex = 31;
+            this.txt_ProductMax.TextChanged += new System.EventHandler(this.txt_ProductMax_TextChanged);
             // 
             // txt_ProductMin
             // 
@@ -218,6 +223,7 @@
             this.txt_ProductMin.Name = "txt_ProductMin";
             this.txt_ProductMin.Size = new System.Drawing.Size(63, 28);
             this.txt_ProductMin.TabIndex = 29;
+            this.txt_ProductMin.TextChanged += new System.EventHandler(this.txt_ProductMin_TextChanged);
             // 
             // label1
             // 
@@ -236,6 +242,7 @@
             this.txt_ProductName.Name = "txt_ProductName";
             this.txt_ProductName.Size = new System.Drawing.Size(159, 28);
             this.txt_ProductName.TabIndex = 27;
+            this.txt_ProductName.TextChanged += new System.EventHandler(this.txt_ProductName_TextChanged);
             // 
             // label8
             // 
@@ -256,6 +263,7 @@
             this.txt_ProductId.Name = "txt_ProductId";
             this.txt_ProductId.Size = new System.Drawing.Size(159, 28);
             this.txt_ProductId.TabIndex = 25;
+            this.txt_ProductId.TextChanged += new System.EventHandler(this.txt_ProductId_TextChanged);
             // 
             // label9
             // 

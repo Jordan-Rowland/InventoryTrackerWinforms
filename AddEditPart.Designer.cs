@@ -67,6 +67,7 @@
             this.txt_PartId.Name = "txt_PartId";
             this.txt_PartId.Size = new System.Drawing.Size(159, 28);
             this.txt_PartId.TabIndex = 1;
+            this.txt_PartId.TextChanged += new System.EventHandler(this.txt_PartId_TextChanged);
             // 
             // txt_PartName
             // 
@@ -75,6 +76,7 @@
             this.txt_PartName.Name = "txt_PartName";
             this.txt_PartName.Size = new System.Drawing.Size(159, 28);
             this.txt_PartName.TabIndex = 2;
+            this.txt_PartName.TextChanged += new System.EventHandler(this.txt_PartName_TextChanged);
             // 
             // label2
             // 
@@ -94,6 +96,7 @@
             this.txt_PartMin.Name = "txt_PartMin";
             this.txt_PartMin.Size = new System.Drawing.Size(63, 28);
             this.txt_PartMin.TabIndex = 5;
+            this.txt_PartMin.TextChanged += new System.EventHandler(this.txt_PartMin_TextChanged);
             // 
             // label3
             // 
@@ -112,6 +115,7 @@
             this.txt_PartMax.Name = "txt_PartMax";
             this.txt_PartMax.Size = new System.Drawing.Size(63, 28);
             this.txt_PartMax.TabIndex = 6;
+            this.txt_PartMax.TextChanged += new System.EventHandler(this.txt_PartMax_TextChanged);
             // 
             // lbl_CompanyOrMachineLabel
             // 
@@ -130,6 +134,7 @@
             this.txt_PartMachineOrCompany.Name = "txt_PartMachineOrCompany";
             this.txt_PartMachineOrCompany.Size = new System.Drawing.Size(159, 28);
             this.txt_PartMachineOrCompany.TabIndex = 7;
+            this.txt_PartMachineOrCompany.TextChanged += new System.EventHandler(this.txt_PartMachineOrCompany_TextChanged);
             // 
             // label5
             // 
@@ -148,6 +153,7 @@
             this.txt_PartPrice.Name = "txt_PartPrice";
             this.txt_PartPrice.Size = new System.Drawing.Size(159, 28);
             this.txt_PartPrice.TabIndex = 4;
+            this.txt_PartPrice.TextChanged += new System.EventHandler(this.txt_PartPrice_TextChanged);
             // 
             // label6
             // 
@@ -166,6 +172,7 @@
             this.txt_PartInventory.Name = "txt_PartInventory";
             this.txt_PartInventory.Size = new System.Drawing.Size(159, 28);
             this.txt_PartInventory.TabIndex = 3;
+            this.txt_PartInventory.TextChanged += new System.EventHandler(this.txt_PartInventory_TextChanged);
             // 
             // label7
             // 

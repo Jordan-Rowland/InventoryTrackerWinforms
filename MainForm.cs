@@ -43,6 +43,7 @@ namespace jordan_rowland_inventoryC968
         {
             AddEditProduct addEditProduct = new AddEditProduct(Inventory);
             addEditProduct.ShowDialog();
+            dg_Parts.Refresh();
         }
 
         private void btn_PartsEdit_Click(object sender, EventArgs e)
@@ -66,55 +67,103 @@ namespace jordan_rowland_inventoryC968
             try
             {
                 int id = (int)dg_Parts.SelectedRows[0].Cells["PartId"].Value;
-                Part part = Inventory.AllParts.FirstOrDefault(q => q.PartId == id);
-                Inventory.DeletePart(part);
-            }            
+                string message = "Delete this part?";
+                string caption = "Click Yes or No to confirm";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                    Inventory.DeletePart(Inventory.AllParts.FirstOrDefault(q => q.PartId == id));
+            }
             catch
             {
-                MessageBox.Show("No Part selected");
+                MessageBox.Show("No part selected");
             }
         }
 
-        //!! TODO: Need to delete Products as well
-
         private void btn_PartsSearch_Click(object sender, EventArgs e)
         {
-            BindingList<Part> results;
-            if (int.TryParse(txt_PartsSearch.Text, out int result)) results = new BindingList<Part>() { Inventory.AllParts.Where(p => p.PartId == result).First() };
-            else results = new BindingList<Part>(Inventory.AllParts.Where(p => p.Name.Contains(txt_PartsSearch.Text)).ToList());
-            dg_Parts.DataSource = results;
+            if (int.TryParse(txt_PartsSearch.Text, out int result))
+            {
+                foreach (DataGridViewRow row in dg_Parts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (result == part.PartId) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dg_Parts.Rows)
+                {
+                    Part part = (Part)row.DataBoundItem;
+                    if (part.Name.Contains(txt_PartsSearch.Text)) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
         }
 
         private void btn_ProductsSearch_Click(object sender, EventArgs e)
         {
-            BindingList<Product> results;
-            if (int.TryParse(txt_ProductSearch.Text, out int result)) results = new BindingList<Product>() { Inventory.Products.Where(p => p.ProductId == result).First() };
-            else results = new BindingList<Product>(Inventory.Products.Where(p => p.Name.Contains(txt_ProductSearch.Text)).ToList());
-            dg_Products.DataSource = results;
+            if (int.TryParse(txt_ProductSearch.Text, out int result))
+            {
+                foreach (DataGridViewRow row in dg_Products.Rows)
+                {
+                    Product product = (Product)row.DataBoundItem;
+                    if (result == product.ProductId) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in dg_Products.Rows)
+                {
+                    Product product = (Product)row.DataBoundItem;
+                    if (product.Name.Contains(txt_ProductSearch.Text)) row.Selected = true;
+                    else row.Selected = false;
+                }
+            }
         }
 
         private void btn_ProductsEdit_Click(object sender, EventArgs e)
         {
-            //try
-            //{
+            try
+            {
                 // BETTER ERRORS
                 int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
                 Product product = Inventory.LookupProduct(id);
                 AddEditProduct addEditProduct = new AddEditProduct(Inventory, product);
                 addEditProduct.ShowDialog();
                 dg_Products.Refresh();
-            //}
-            //catch
-            //{
-            //    MessageBox.Show("No Product selected");
-            //}
-        }
+            }
+            catch
+            {
+                MessageBox.Show("No Product selected");
+            }
+}
 
         private void btn_ProductsDelete_Click(object sender, EventArgs e)
         {
-            int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
-            Product product = Inventory.LookupProduct(id);
-            Inventory.RemoveProduct(product);
+            // Still need to account for missing or unselected rows
+            try
+            {
+                int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
+                string message = "Delete this product?";
+                string caption = "Click Yes or No to confirm";
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+                result = MessageBox.Show(message, caption, buttons);
+                if (result == System.Windows.Forms.DialogResult.Yes) Inventory.RemoveProduct(Inventory.LookupProduct(id));
+            }
+            catch
+            {
+                MessageBox.Show("No product selected");
+            }
+}
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
