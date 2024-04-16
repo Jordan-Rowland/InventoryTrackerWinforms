@@ -13,7 +13,7 @@ namespace jordan_rowland_inventoryC968
 {
     public partial class AddEditPart : Form
     {
-        bool isEditMode = false;
+        readonly bool isEditMode = false;
         Inventory Inventory { get; set; }
 
         public AddEditPart(Inventory inventory)
@@ -63,7 +63,7 @@ namespace jordan_rowland_inventoryC968
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            // NEEDS VALIDATION AND STUFF
+            // TODO: NEEDS VALIDATION AND STUFF
             int id = int.Parse(txt_PartId.Text);
             string name = txt_PartName.Text;
             int inventory = int.Parse(txt_PartInventory.Text);
@@ -71,33 +71,37 @@ namespace jordan_rowland_inventoryC968
             int min = int.Parse(txt_PartMin.Text);
             int max = int.Parse(txt_PartMax.Text);
 
-
-            if (isEditMode)
+            dynamic part;
+            if (rdo_Outsourced.Checked)
             {
-                if (rdo_Outsourced.Checked)
+                string machineOrCompany = txt_PartMachineOrCompany.Text;
+                part = new Outsourced()
                 {
-                    string machineOrCompany = txt_PartMachineOrCompany.Text;
-                    Inventory.updatePart(id, new Outsourced() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, CompanyName = machineOrCompany });
-                }
-                else if (rdo_Inhouse.Checked)
-                {
-                    int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
-                    Inventory.updatePart(id, new Inhouse() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, MachineId = machineOrCompany });
-                }
+                    PartId = id,
+                    Name = name,
+                    InStock = inventory,
+                    Price = price,
+                    Min = min,
+                    Max = max,
+                    CompanyName = machineOrCompany
+                };
             }
             else
             {
-                if (rdo_Outsourced.Checked)
+                int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
+                part = new Inhouse()
                 {
-                    string machineOrCompany = txt_PartMachineOrCompany.Text;
-                    Inventory.addPart(new Outsourced() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, CompanyName = machineOrCompany });
-                }
-                else if (rdo_Inhouse.Checked)
-                {
-                    int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
-                    Inventory.addPart(new Inhouse() { PartId = id, Name = name, InStock = inventory, Price = price, Min = min, Max = max, MachineId = machineOrCompany });
-                }
+                    PartId = id,
+                    Name = name,
+                    InStock = inventory,
+                    Price = price,
+                    Min = min,
+                    Max = max,
+                    MachineId = machineOrCompany,
+                };
             }
+            if (isEditMode) Inventory.UpdatePart(id, part);
+            else Inventory.AddPart(part);
             Close();
         }
 

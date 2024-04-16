@@ -24,16 +24,18 @@ namespace jordan_rowland_inventoryC968
             //AssociatedParts = new BindingList<Part>() { hardcodedPart1 };
         }
 
-        public void addAssociatedPart(Part part) {
+        public void AddAssociatedPart(Part part) {
             AssociatedParts.Add(part);
         }
 
-        public bool removeAssociatedPart(Part part) {
+        public bool RemoveAssociatedPart(Part part) {
+
+            //!! TODO: Add try catch here too
             AssociatedParts.Remove(part);
             return true;
         }
 
-        public Part lookupAssociatedPart(int partId) {
+        public Part LookupAssociatedPart(int partId) {
             return (Part)AssociatedParts.Where(p => p.PartId == partId).Select(p => p);
         }
     }

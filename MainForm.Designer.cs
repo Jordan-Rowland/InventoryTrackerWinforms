@@ -71,7 +71,7 @@
             // txt_PartsSearch
             // 
             this.txt_PartsSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_PartsSearch.Location = new System.Drawing.Point(498, 108);
+            this.txt_PartsSearch.Location = new System.Drawing.Point(652, 105);
             this.txt_PartsSearch.Name = "txt_PartsSearch";
             this.txt_PartsSearch.Size = new System.Drawing.Size(232, 30);
             this.txt_PartsSearch.TabIndex = 2;
@@ -79,12 +79,13 @@
             // btn_PartsSearch
             // 
             this.btn_PartsSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_PartsSearch.Location = new System.Drawing.Point(392, 108);
+            this.btn_PartsSearch.Location = new System.Drawing.Point(546, 105);
             this.btn_PartsSearch.Name = "btn_PartsSearch";
             this.btn_PartsSearch.Size = new System.Drawing.Size(88, 30);
             this.btn_PartsSearch.TabIndex = 3;
             this.btn_PartsSearch.Text = "Search";
             this.btn_PartsSearch.UseVisualStyleBackColor = true;
+            this.btn_PartsSearch.Click += new System.EventHandler(this.btn_PartsSearch_Click);
             // 
             // dg_Parts
             // 
@@ -149,6 +150,7 @@
             this.btn_ProductsEdit.TabIndex = 13;
             this.btn_ProductsEdit.Text = "Modify";
             this.btn_ProductsEdit.UseVisualStyleBackColor = true;
+            this.btn_ProductsEdit.Click += new System.EventHandler(this.btn_ProductsEdit_Click);
             // 
             // btn_ProductsDelete
             // 
@@ -179,6 +181,7 @@
             this.btn_ProductsSearch.TabIndex = 10;
             this.btn_ProductsSearch.Text = "Search";
             this.btn_ProductsSearch.UseVisualStyleBackColor = true;
+            this.btn_ProductsSearch.Click += new System.EventHandler(this.btn_ProductsSearch_Click);
             // 
             // txt_ProductSearch
             // 

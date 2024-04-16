@@ -31,27 +31,41 @@ namespace jordan_rowland_inventoryC968
                 Max = 6,
                 AssociatedParts = new BindingList<Part>() { hardcodedPart1, hardcodedPart2, hardcodedPart3 },
             };
+            //!! Figure out why there is a phantom row
             Products = new BindingList<Product>() { hardcodedProduct1 };
         }
-        public void addProduct(Product product) => Products.Add(product);
-        public bool removeProduct(Product product)
+        public void AddProduct(Product product) => Products.Add(product);
+        public bool RemoveProduct(Product product)
         {
+            Products.Remove(product);
             return false;
         }
-        public Product lookupProduct(int productId) => Products.FirstOrDefault(q => q.ProductId == productId);
+        public Product LookupProduct(int productId) => Products.FirstOrDefault(q => q.ProductId == productId);
+        public void UpdateProduct(int productId, Product newProduct)
+        {
+            Product product = LookupProduct(productId);
+            product.ProductId = newProduct.ProductId;
+            product.Name = newProduct.Name;
+            product.InStock = newProduct.InStock;
+            product.Price = newProduct.Price;
+            product.Min = newProduct.Min;
+            product.Max = newProduct.Max;
+            product.AssociatedParts = newProduct.AssociatedParts;
+        }
 
-        public void addPart(Part part) => AllParts.Add(part);
-        public bool deletePart(Part part)
+        public void AddPart(Part part) => AllParts.Add(part);
+        public bool DeletePart(Part part)
         {
             AllParts.Remove(part);
+            // Add code here to check list and if item still exists, return false
             return false;
         }
-        public Part lookupPart(int partId) => AllParts.FirstOrDefault(q => q.PartId == partId);
+        public Part LookupPart(int partId) => AllParts.FirstOrDefault(q => q.PartId == partId);
 
         // Maybe use 2 functions for this
-        public void updatePart(int partId, Part newPart)
+        public void UpdatePart(int partId, Part newPart)
         {
-            Part part = lookupPart(partId);
+            Part part = LookupPart(partId);
             dynamic updatedPart;
             dynamic parsedNewPart;
 
