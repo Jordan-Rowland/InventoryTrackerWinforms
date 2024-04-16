@@ -65,20 +65,34 @@ namespace jordan_rowland_inventoryC968
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            // TODO: NEEDS VALIDATION AND STUFF
+            string errors = "";
+
+            if (!int.TryParse(txt_PartInventory.Text, out int inventory)) errors += "* Inventory must be a valid number\n";
+            if (!decimal.TryParse(txt_PartPrice.Text, out decimal price)) errors += "* Price must be a valid Decimal\n";
+            if (!int.TryParse(txt_PartMin.Text, out int min)) errors += "* Min must be a valid number\n";
+            if (!int.TryParse(txt_PartMax.Text, out int max)) errors += "* Max must be a valid number\n";
+            if (min > max) errors += "* Min must be less than Max\n";
+            if (inventory < min || inventory > max) errors += "* Inventory must be between Min and Max\n";
+
+            int machineId = 0;
+            if (rdo_Inhouse.Checked && !int.TryParse(txt_PartMachineOrCompany.Text, out machineId))
+                errors += "* Machine ID valid number\n";
+
+
+            if (errors.Any())
+            {
+                MessageBox.Show($"The Following Errors must be fxed:\n{errors}");
+                return;
+            }
+
             int id = int.Parse(txt_PartId.Text);
             string name = txt_PartName.Text;
-            int inventory = int.Parse(txt_PartInventory.Text);
-            decimal price = decimal.Parse(txt_PartPrice.Text);
-            int min = int.Parse(txt_PartMin.Text);
-            int max = int.Parse(txt_PartMax.Text);
 
             dynamic part;
 
-            //!! TODO: Be able to change the part from Inhouse to Outsourced
             if (rdo_Outsourced.Checked)
             {
-                string machineOrCompany = txt_PartMachineOrCompany.Text;
+                string companyName = txt_PartMachineOrCompany.Text;
                 part = new Outsourced()
                 {
                     PartId = id,
@@ -87,12 +101,11 @@ namespace jordan_rowland_inventoryC968
                     Price = price,
                     Min = min,
                     Max = max,
-                    CompanyName = machineOrCompany
+                    CompanyName = companyName
                 };
             }
             else
             {
-                int machineOrCompany = int.Parse(txt_PartMachineOrCompany.Text);
                 part = new Inhouse()
                 {
                     PartId = id,
@@ -101,9 +114,10 @@ namespace jordan_rowland_inventoryC968
                     Price = price,
                     Min = min,
                     Max = max,
-                    MachineId = machineOrCompany,
+                    MachineId = machineId,
                 };
             }
+
             if (isEditMode) Inventory.UpdatePart(id, part);
             else Inventory.AddPart(part);
             Close();

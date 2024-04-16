@@ -16,13 +16,6 @@ namespace jordan_rowland_inventoryC968
         public int Max { get; set; }
     }
 
-    public class Inhouse : Part
-    {
-        public int MachineId { get; set; }
-    }
-
-    public class Outsourced : Part
-    {
-        public string CompanyName { get; set; }
-    }
+    public class Inhouse : Part { public int MachineId { get; set; } }
+    public class Outsourced : Part { public string CompanyName { get; set; } }
 }

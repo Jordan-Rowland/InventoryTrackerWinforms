@@ -53,7 +53,6 @@ namespace jordan_rowland_inventoryC968
         public bool DeletePart(Part part) => AllParts.Remove(part);
         public Part LookupPart(int partId) => AllParts.FirstOrDefault(q => q.PartId == partId);
 
-        // Maybe use 2 functions for this
         public void UpdatePart(int partId, Part newPart)
         {
             Part part = LookupPart(partId);

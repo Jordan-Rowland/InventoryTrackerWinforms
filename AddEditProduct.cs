@@ -51,6 +51,12 @@ namespace jordan_rowland_inventoryC968
             dg_ProductParts.AllowUserToAddRows = false;
             dg_AllParts.ReadOnly = true;
             dg_ProductParts.ReadOnly = true;
+
+            dg_AllParts.Columns[0].HeaderText = "Part ID";
+            dg_AllParts.Columns[2].HeaderText = "Inventory";
+
+            dg_ProductParts.Columns[0].HeaderText = "Part ID";
+            dg_ProductParts.Columns[2].HeaderText = "Inventory";
         }
 
         private void PopulateFields(Product product)
@@ -75,16 +81,25 @@ namespace jordan_rowland_inventoryC968
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            // TODO: NEEDS VALIDATION AND STUFF
+
+            string errors = "";
+
+            if (!int.TryParse(txt_ProductInventory.Text, out int inventory)) errors += "* Inventory must be a valid number\n";
+            if (!decimal.TryParse(txt_ProductPrice.Text, out decimal price)) errors += "* Price must be a valid Decimal\n";
+            if (!int.TryParse(txt_ProductMin.Text, out int min)) errors += "* Min must be a valid number\n";
+            if (!int.TryParse(txt_ProductMax.Text, out int max)) errors += "* Max must be a valid number\n";
+            if (min > max) errors += "* Min must be less than Max\n";
+            if (inventory < min || inventory > max) errors += "* Inventory must be between Min and Max\n";
+
+            if (errors.Any())
+            {
+                MessageBox.Show($"The Following Errors must be fxed:\n{errors}");
+                return;
+            }
+
             int id = int.Parse(txt_ProductId.Text);
             string name = txt_ProductName.Text;
-            int inventory = int.Parse(txt_ProductInventory.Text);
-            decimal price = decimal.Parse(txt_ProductPrice.Text);
-            int min = int.Parse(txt_ProductMin.Text);
-            int max = int.Parse(txt_ProductMax.Text);
-            //BindingList<Part> partList = (BindingList<Part>)dg_ProductParts.DataSource;
 
-            Debug.Write($"\nCount: {AssociatedParts.Count()}");
             Product product = new Product()
             {
                 ProductId = id,
