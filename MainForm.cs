@@ -74,6 +74,22 @@ namespace jordan_rowland_inventoryC968
             try
             {
                 int id = (int)dg_Parts.SelectedRows[0].Cells["PartId"].Value;
+                
+                foreach (Product product in Inventory.Products)
+                {
+                    foreach (Part prodPart in product.AssociatedParts)
+                    {
+                        if (prodPart.PartId == id)
+                        {
+                            MessageBox.Show(
+                                "You cannot delete a parts that is associated with a product." +
+                                "\nPlease remove the parts and try again."
+                            );
+                            return;
+                        }
+                    }
+                }
+
                 string message = "Delete this part?";
                 string caption = "Click Yes or No to confirm";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
@@ -164,20 +180,12 @@ namespace jordan_rowland_inventoryC968
                 int id = (int)dg_Products.SelectedRows[0].Cells["ProductId"].Value;
                 Product product = Inventory.LookupProduct(id);
 
-                if (product.AssociatedParts.Any())
-                {
-                    MessageBox.Show(
-                        "You cannot delete a product with parts associated with it.\nPlease remove the parts and try again."
-                    );
-                    return;
-                }
-
                 string message = "Delete this product?";
                 string caption = "Click Yes or No to confirm";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 DialogResult result;
                 result = MessageBox.Show(message, caption, buttons);
-                if (result == System.Windows.Forms.DialogResult.Yes) Inventory.RemoveProduct(product);
+                if (result == System.Windows.Forms.DialogResult.Yes) Inventory.RemoveProduct(id);
             }
             catch
             {

@@ -34,7 +34,12 @@ namespace jordan_rowland_inventoryC968
             Products = new BindingList<Product>() { hardcodedProduct1 };
         }
         public void AddProduct(Product product) => Products.Add(product);
-        public bool RemoveProduct(Product product) =>Products.Remove(product);
+        public bool RemoveProduct(int productId)
+        {
+            Product product = LookupProduct(productId);
+            return Products.Remove(product);
+        }
+
         public Product LookupProduct(int productId) => Products.FirstOrDefault(q => q.ProductId == productId);
         
         public void UpdateProduct(int productId, Product newProduct)

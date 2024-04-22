@@ -19,7 +19,11 @@ namespace jordan_rowland_inventoryC968
         public int Max { get; set; }
 
         public void AddAssociatedPart(Part part) => AssociatedParts.Add(part);
-        public bool RemoveAssociatedPart(Part part) => AssociatedParts.Remove(part);
+        public bool RemoveAssociatedPart(int partId)
+        {
+            Part part = LookupAssociatedPart(partId);
+            return AssociatedParts.Remove(part);
+        }
         public Part LookupAssociatedPart(int partId) => (Part)AssociatedParts.Where(p => p.PartId == partId).Select(p => p);
     }
 }
